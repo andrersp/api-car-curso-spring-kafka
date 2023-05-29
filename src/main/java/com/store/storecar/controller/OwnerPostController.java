@@ -20,7 +20,7 @@ public class OwnerPostController {
 
     @PostMapping
 
-    public ResponseEntity createOwner(@RequestBody OwnerPostDTO ownerPostDTO) {
+    public ResponseEntity<Object> createOwner(@RequestBody OwnerPostDTO ownerPostDTO) {
         ownerPostService.createOwner(ownerPostDTO);
 
         return new ResponseEntity<>(HttpStatus.OK);
