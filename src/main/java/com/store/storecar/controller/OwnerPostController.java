@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.store.storecar.dto.OwnerPostDTO;
 import com.store.storecar.service.OwnerPostService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Propietario", description = "Endpoint de cadastro de Anunciantes")
 @RestController
 @RequestMapping("/user")
 public class OwnerPostController {
@@ -19,7 +22,6 @@ public class OwnerPostController {
     private OwnerPostService ownerPostService;
 
     @PostMapping
-
     public ResponseEntity<Object> createOwner(@RequestBody OwnerPostDTO ownerPostDTO) {
         ownerPostService.createOwner(ownerPostDTO);
 

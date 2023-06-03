@@ -36,6 +36,8 @@ public class CarPostServiceImpl implements CarPostService {
 
         List<CarPostDTO> listCarsSales = new ArrayList<>();
 
+        System.out.println(carPostRepository.listCars());
+
         carPostRepository.findAll().forEach(car -> {
             listCarsSales.add(mapCarEntityToDTO(car));
         });

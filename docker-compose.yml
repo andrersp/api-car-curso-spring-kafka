@@ -13,6 +13,8 @@ services:
       - POSTGRES_PASSWORD=cars
     networks:
       - database_network
+    ports:
+      - 5432:5432
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U cars" ]
       interval: 5s
