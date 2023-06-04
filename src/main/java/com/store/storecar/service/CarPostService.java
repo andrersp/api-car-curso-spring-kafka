@@ -18,4 +18,6 @@ public interface CarPostService {
 
     void removeCarSale(Long postID);
 
+    CarPostDTO getCarDetail(Long id);
+
 }

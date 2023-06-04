@@ -64,6 +64,13 @@ public class CarPostServiceImpl implements CarPostService {
 
     }
 
+    @Override
+    public CarPostDTO getCarDetail(Long id) {
+        CarPostRepository carDTO = carPostRepository.findById(id).ifPresentOrElse(car -> {mapCarEntityToDTO(car)}, () -> {
+            
+        } );
+    }
+
     private CarPostDTO mapCarEntityToDTO(CarPostEntity carPostEntity) {
 
         return CarPostDTO.builder()
