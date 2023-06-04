@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.store.storecar.dto.CarPostDTO;
+import com.store.storecar.dto.ResumeCarDTO;
 import com.store.storecar.service.CarPostService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,7 +27,7 @@ public class CarPostController {
     private CarPostService carPostService;
 
     @GetMapping("/cars")
-    public ResponseEntity<List<CarPostDTO>> getCarSales() {
+    public ResponseEntity<List<ResumeCarDTO>> getCarSales() {
         return ResponseEntity.status(HttpStatus.OK).body(carPostService.getCarSales());
 
     }

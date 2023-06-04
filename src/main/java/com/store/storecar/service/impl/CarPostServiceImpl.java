@@ -1,6 +1,5 @@
 package com.store.storecar.service.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.store.storecar.dto.CarPostDTO;
+import com.store.storecar.dto.ResumeCarDTO;
 import com.store.storecar.entity.CarPostEntity;
 import com.store.storecar.repository.CarPostRepository;
 import com.store.storecar.repository.OwnerPostRepository;
@@ -32,17 +32,10 @@ public class CarPostServiceImpl implements CarPostService {
     }
 
     @Override
-    public List<CarPostDTO> getCarSales() {
+    public List<ResumeCarDTO> getCarSales() {
 
-        List<CarPostDTO> listCarsSales = new ArrayList<>();
+        return carPostRepository.listCars();
 
-        System.out.println(carPostRepository.listCars());
-
-        carPostRepository.findAll().forEach(car -> {
-            listCarsSales.add(mapCarEntityToDTO(car));
-        });
-
-        return listCarsSales;
     }
 
     @Override
