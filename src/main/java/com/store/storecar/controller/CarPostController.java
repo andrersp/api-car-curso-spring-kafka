@@ -17,31 +17,36 @@ import com.store.storecar.dto.CarPostDTO;
 import com.store.storecar.dto.ResumeCarDTO;
 import com.store.storecar.service.CarPostService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Veiculos", description = "Endpoint para consulta e cadastro veiculos")
 @RestController
-@RequestMapping("/sales")
+@RequestMapping("/cars")
 public class CarPostController {
     @Autowired
     private CarPostService carPostService;
 
-    @GetMapping("/cars")
+    @GetMapping("")
     public ResponseEntity<List<ResumeCarDTO>> getCarSales() {
         return ResponseEntity.status(HttpStatus.OK).body(carPostService.getCarSales());
 
     }
 
-    @PutMapping("/cars/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> changeCarSale(@RequestBody CarPostDTO carPostDTO, @PathVariable("id") String id) {
         carPostService.changeCarSale(carPostDTO, Long.valueOf(id));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/cars/{id}")
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete um veiculos", description = "Endpoint para deletar um veiculo", responses = @ApiResponse(responseCode = "204", content = @Content(schema = @Schema(hidden = true))))
     public ResponseEntity<?> deleteCarSale(@PathVariable("id") String id) {
         carPostService.removeCarSale(Long.valueOf(id));
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

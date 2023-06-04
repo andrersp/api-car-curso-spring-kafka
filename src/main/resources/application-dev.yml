@@ -1,10 +1,10 @@
 spring:
   kafka:
-    bootstrap-servers: 10.0.1.105:9093
+    bootstrap-servers: ${KAFKA_SERVER}
   datasource:
-    url: jdbc:postgresql://10.0.1.105:5432/cars
-    username: cars
-    password: cars
+    url: jdbc:${DATABASE_URI}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
