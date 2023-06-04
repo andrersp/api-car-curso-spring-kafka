@@ -66,9 +66,11 @@ public class CarPostServiceImpl implements CarPostService {
 
     @Override
     public CarPostDTO getCarDetail(Long id) {
-        CarPostRepository carDTO = carPostRepository.findById(id).ifPresentOrElse(car -> {mapCarEntityToDTO(car)}, () -> {
-            
-        } );
+        CarPostEntity carEntity = carPostRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException());
+
+        return mapCarEntityToDTO(carEntity);
+
     }
 
     private CarPostDTO mapCarEntityToDTO(CarPostEntity carPostEntity) {

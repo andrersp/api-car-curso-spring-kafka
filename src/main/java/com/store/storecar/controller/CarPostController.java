@@ -49,4 +49,13 @@ public class CarPostController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<CarPostDTO> getCar(@PathVariable("id") Long id) {
+
+        CarPostDTO car = carPostService.getCarDetail(id);
+
+        return ResponseEntity.ok().body(car);
+
+    }
+
 }
