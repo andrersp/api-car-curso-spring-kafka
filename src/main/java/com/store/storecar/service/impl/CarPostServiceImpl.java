@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.store.storecar.controller.exceptions.ResourceNotFoundException;
 import com.store.storecar.dto.CarPostDTO;
 import com.store.storecar.dto.ResumeCarDTO;
 import com.store.storecar.entity.CarPostEntity;
@@ -67,7 +68,7 @@ public class CarPostServiceImpl implements CarPostService {
     @Override
     public CarPostDTO getCarDetail(Long id) {
         CarPostEntity carEntity = carPostRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException());
+                .orElseThrow(() -> new ResourceNotFoundException("Not foud"));
 
         return mapCarEntityToDTO(carEntity);
 
