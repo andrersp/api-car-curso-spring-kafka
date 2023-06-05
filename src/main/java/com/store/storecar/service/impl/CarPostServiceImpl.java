@@ -68,7 +68,7 @@ public class CarPostServiceImpl implements CarPostService {
     @Override
     public CarPostDTO getCarDetail(Long id) {
         CarPostEntity carEntity = carPostRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not foud"));
+                .orElseThrow(() -> new ResourceNotFoundException("car not found"));
 
         return mapCarEntityToDTO(carEntity);
 
