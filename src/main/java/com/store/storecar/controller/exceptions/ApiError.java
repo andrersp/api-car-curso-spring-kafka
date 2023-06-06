@@ -18,9 +18,12 @@ import lombok.Data;
 public class ApiError {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
-    @Schema(example = "BAD_REQUEST")
+    @Schema(example = "HTTP_STATUS")
     private HttpStatus status;
+    @Schema(example = "Error message")
     private String message;
+
+    @Schema(example = "")
     private List<String> errors;
 
 }

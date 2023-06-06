@@ -12,6 +12,7 @@ import com.store.storecar.dto.OwnerPostDTO;
 import com.store.storecar.service.OwnerPostService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 @Tag(name = "Propietario", description = "Endpoint de cadastro de Anunciantes")
 @RestController
@@ -22,7 +23,7 @@ public class OwnerPostController {
     private OwnerPostService ownerPostService;
 
     @PostMapping
-    public ResponseEntity<Object> createOwner(@RequestBody OwnerPostDTO ownerPostDTO) {
+    public ResponseEntity<Object> createOwner(@Valid @RequestBody OwnerPostDTO ownerPostDTO) {
         ownerPostService.createOwner(ownerPostDTO);
 
         return new ResponseEntity<>(HttpStatus.OK);
