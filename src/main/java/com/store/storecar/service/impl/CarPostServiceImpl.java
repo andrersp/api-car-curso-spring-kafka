@@ -2,7 +2,6 @@ package com.store.storecar.service.impl;
 
 import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,7 +50,7 @@ public class CarPostServiceImpl implements CarPostService {
             car.setModel(carPostDTO.getModel());
             carPostRepository.save(car);
         }, () -> {
-            throw new NoSuchElementException();
+            throw new ResourceNotFoundException("car not found");
         }
 
         );

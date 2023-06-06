@@ -16,8 +16,17 @@ public class OwnerPostServiceImpl implements OwnerPostService {
 
     @Override
     public void createOwner(OwnerPostDTO ownerPostDTO) {
+
         OwnerPostEntity ownerPostEntity = mapOwnerDtoToEntity(ownerPostDTO);
+
+        boolean exist = ownerPostRepository.findFirstByNameOrderByIdDesc(ownerPostEntity.getName()).isPresent();
+
+        if (exist) {
+            throw new RuntimeException(String.format("%s: Duplicate name", ownerPostEntity.getName()));
+        }
+
         ownerPostRepository.save(ownerPostEntity);
+
     }
 
     private OwnerPostEntity mapOwnerDtoToEntity(OwnerPostDTO ownerPost) {

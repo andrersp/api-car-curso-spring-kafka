@@ -18,6 +18,7 @@ public class OwnerPostDTO {
     @NotBlank(message = "required")
     @Schema(example = "nome")
     private String name;
+    @Schema(example = "Pessoa Fisíca")
     private String type;
     @NotBlank(message = "required")
     private String contactNumber;
